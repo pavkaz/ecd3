@@ -1,7 +1,10 @@
+D:\ecd3\src\main\java\com\kazh_kvetk\exceptions\EntityIsDependentException.java
 D:\ecd3\src\main\java\com\kazh_kvetk\services\MarksServiceImpl.java
 D:\ecd3\src\main\java\com\kazh_kvetk\controllers\StudentController.java
+D:\ecd3\src\main\java\com\kazh_kvetk\services\EntitiesInfoProviderImpl.java
 D:\ecd3\src\main\java\com\kazh_kvetk\services\TeacherServiceImpl.java
 D:\ecd3\src\main\java\com\kazh_kvetk\data\User.java
+D:\ecd3\src\main\java\com\kazh_kvetk\controllers\advices\ExceptionAdvice.java
 D:\ecd3\src\main\java\com\kazh_kvetk\services\TeacherService.java
 D:\ecd3\src\main\java\com\kazh_kvetk\controllers\MainController.java
 D:\ecd3\src\main\java\com\kazh_kvetk\services\StudentService.java
@@ -29,3 +32,4 @@ D:\ecd3\src\main\java\com\kazh_kvetk\security\configs\SecurityConfig.java
 D:\ecd3\src\main\java\com\kazh_kvetk\data\Teacher.java
 D:\ecd3\src\main\java\com\kazh_kvetk\data\repositories\StudentRepository.java
 D:\ecd3\src\main\java\com\kazh_kvetk\exceptions\EntityAlreadyExistsException.java
+D:\ecd3\src\main\java\com\kazh_kvetk\services\EntitiesInfoProvider.java
