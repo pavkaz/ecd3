@@ -7,6 +7,6 @@ ecd3 is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application bui
 ```
 git clone https://github.com/pavkaz/ecd3.git
 cd ecd3
-mvnw clean install
-mvnw spring-boot:run
+mvn clean install
+mvn spring-boot:run
 ```
