@@ -24,8 +24,8 @@ public class Teacher {
   @Column(name = "degree")
   private String degree;
 
-  @Column(name = "title")
-  private String title;
+  @Column(name = "academicRank")
+  private String academicRank;
 
   @Column(name = "department")
   private String department;
@@ -45,12 +45,12 @@ public class Teacher {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Teacher teacher = (Teacher) o;
-    return Objects.equals(fullName, teacher.fullName) && Objects.equals(degree, teacher.degree) && Objects.equals(title, teacher.title) && Objects.equals(department, teacher.department) && Objects.equals(phoneNumber, teacher.phoneNumber) && Objects.equals(email, teacher.email) && Objects.equals(themes, teacher.themes);
+    return Objects.equals(fullName, teacher.fullName) && Objects.equals(degree, teacher.degree) && Objects.equals(academicRank, teacher.academicRank) && Objects.equals(department, teacher.department) && Objects.equals(phoneNumber, teacher.phoneNumber) && Objects.equals(email, teacher.email) && Objects.equals(themes, teacher.themes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fullName, degree, title, department, phoneNumber, email, themes);
+    return Objects.hash(fullName, degree, academicRank, department, phoneNumber, email, themes);
   }
 
   public void addTheme(Theme theme) {

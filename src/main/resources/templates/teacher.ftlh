@@ -3,7 +3,7 @@
   <h4>Teacher info</h4>
   Full name: ${teacher.fullName}<br>
   Degree: ${teacher.degree}<br>
-  Title: ${teacher.title}<br>
+  Academic rank: ${teacher.academicRank}<br>
   Department: ${teacher.department}<br>
   Phone number: ${teacher.phoneNumber}<br>
   Email: ${teacher.email}<br>

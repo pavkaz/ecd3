@@ -11,8 +11,8 @@
       <input type="text" class="form-control" id="degree" required name="degree">
     </div>
     <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" name="title">
+      <label for="academicRank">Academic rank</label>
+      <input type="text" class="form-control" id="academicRank" name="academicRank">
     </div>
     <div class="form-group">
       <label for="department">Department</label>
