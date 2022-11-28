@@ -2,7 +2,6 @@ package com.kazh_kvetk.controllers;
 
 import com.kazh_kvetk.data.Marks;
 import com.kazh_kvetk.data.Student;
-import com.kazh_kvetk.exceptions.EntityAlreadyExistsException;
 import com.kazh_kvetk.services.MarksService;
 import com.kazh_kvetk.services.StudentService;
 import com.kazh_kvetk.services.TeacherService;
@@ -29,7 +28,8 @@ public class StudentController {
   public StudentController(StudentService studentService,
                            TeacherService teacherService,
                            ThemeService themeService,
-                           MarksService marksService) {
+                           MarksService marksService
+  ) {
     this.studentService = studentService;
     this.teacherService = teacherService;
     this.themeService = themeService;
