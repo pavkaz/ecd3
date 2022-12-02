@@ -16,9 +16,15 @@
   <body>
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <a href="/info">
-        <span class="navbar-brand mb-0 h1">Themes Configurer</span>
-      </a>
+      <div>
+        <a href="/info">
+          <span class="navbar-brand mb-0 h1">Themes configurer</span>
+        </a>
+
+        <a href="/statement">
+          <span class="navbar-brand mb-0 h1">Student assessment statement</span>
+        </a>
+      </div>
         <#if authorise>
           <div class="dropdown text-end">
             <a href="/users/current/info">

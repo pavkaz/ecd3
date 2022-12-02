@@ -1,9 +1,6 @@
 package com.kazh_kvetk.services;
 
-import com.kazh_kvetk.data.InfoEntity;
-import com.kazh_kvetk.data.Student;
-import com.kazh_kvetk.data.Teacher;
-import com.kazh_kvetk.data.Theme;
+import com.kazh_kvetk.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +26,8 @@ public class EntitiesInfoProviderImpl implements EntitiesInfoProvider{
       if (themes == null) continue;
       for (Theme theme : themes) {
         Student student = studentService.findByTheme(theme);
-        if (student == null) continue;
-        container.add(new InfoEntity(teacher, theme, student, student.getMarks()));
+        if (student == null || student.getMarksList().size() == 0) continue;
+        container.add(new InfoEntity(teacher, theme, student, student.getMarksList()));
       }
     }
     return container;

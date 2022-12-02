@@ -22,18 +22,15 @@ public class StudentController {
   private final StudentService studentService;
   private final TeacherService teacherService;
   private final ThemeService themeService;
-  private final MarksService marksService;
 
   @Autowired
   public StudentController(StudentService studentService,
                            TeacherService teacherService,
-                           ThemeService themeService,
-                           MarksService marksService
+                           ThemeService themeService
   ) {
     this.studentService = studentService;
     this.teacherService = teacherService;
     this.themeService = themeService;
-    this.marksService = marksService;
   }
 
   @GetMapping("/students")
@@ -61,12 +58,7 @@ public class StudentController {
   }
 
   @PostMapping("/students/add")
-  public String addStudent(Student student, String themeName,
-                           Integer stateExamGrade, Integer thesisGrade, Model model) {
-    Marks marks = new Marks(stateExamGrade, thesisGrade);
-    marksService.save(marks);
-
-    student.setMarks(marks);
+  public String addStudent(Student student, String themeName) {
     student.setTheme(themeService.read(themeName));
     studentService.save(student);
     return "redirect:/info";

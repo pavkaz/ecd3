@@ -1,5 +1,6 @@
 package com.kazh_kvetk.services;
 
+import com.kazh_kvetk.data.FacultyGroup;
 import com.kazh_kvetk.data.Student;
 import com.kazh_kvetk.data.Theme;
 import com.kazh_kvetk.exceptions.EntityAlreadyExistsException;
@@ -14,4 +15,6 @@ public interface StudentService {
   void delete(int recordBookNumber);
   Student findByTheme(Theme theme);
   boolean existsByTheme(Theme theme);
+  List<FacultyGroup> groupByFaculty();
+  List<FacultyGroup> groupByFacultyOnDate(int year, int semester);
 }

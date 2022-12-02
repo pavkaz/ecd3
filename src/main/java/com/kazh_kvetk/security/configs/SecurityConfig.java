@@ -18,7 +18,12 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
     httpSecurity
       .authorizeRequests(customizer -> customizer
-        .antMatchers("/users/current/**", "/teachers/**").authenticated()
+        .antMatchers(
+          "/users/current/**",
+          "/teachers/**",
+          "/students/**",
+          "/statement/**"
+        ).authenticated()
       )
       .formLogin(formConfigurer -> formConfigurer
         .loginPage("/users/login")

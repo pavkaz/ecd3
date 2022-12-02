@@ -22,14 +22,6 @@
           </#list>
       </select>
     </div>
-    <div class="form-group">
-      <label for="stateExamGrade">State exam grade</label>
-      <input type="number" class="form-control" id="stateExamGrade" required name="stateExamGrade">
-    </div>
-    <div class="form-group">
-      <label for="thesisGrade">Thesis grade</label>
-      <input type="number" class="form-control" id="thesisGrade" required name="thesisGrade">
-    </div>
     <#if themes?size != 0>
       <input type="hidden" name="_csrf" value="${_csrf.token}">
       <button type="submit" style="width: 100%" class="btn btn-dark">Add</button>

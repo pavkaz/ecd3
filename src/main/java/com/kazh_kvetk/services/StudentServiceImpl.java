@@ -1,5 +1,6 @@
 package com.kazh_kvetk.services;
 
+import com.kazh_kvetk.data.FacultyGroup;
 import com.kazh_kvetk.data.Student;
 import com.kazh_kvetk.data.Theme;
 import com.kazh_kvetk.data.repositories.StudentRepository;
@@ -68,5 +69,15 @@ public class StudentServiceImpl implements StudentService {
   @Override
   public boolean existsByTheme(Theme theme) {
     return repository.existsByTheme(theme);
+  }
+
+  @Override
+  public List<FacultyGroup> groupByFaculty() {
+    return repository.groupByFaculty();
+  }
+
+  @Override
+  public List<FacultyGroup> groupByFacultyOnDate(int year, int semester) {
+    return repository.groupByFacultyInDate(year, semester);
   }
 }

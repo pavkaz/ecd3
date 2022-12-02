@@ -43,7 +43,7 @@ public class TeacherController {
   }
 
   @PostMapping("/teachers/{code}/delete")
-  public String deleteTeacher(@PathVariable("code") Integer code, Model model) {
+  public String deleteTeacher(@PathVariable("code") Integer code) {
     teacherService.delete(code);
     return "redirect:/info";
   }

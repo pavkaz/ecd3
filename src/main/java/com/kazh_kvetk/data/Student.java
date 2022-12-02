@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -29,20 +30,21 @@ public class Student {
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
   private Theme theme;
 
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  private Marks marks;
+  @JoinColumn(name = "student_record_book_number")
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  private List<Marks> marksList;
 
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Student student = (Student) o;
-    return Objects.equals(fullName, student.fullName) && Objects.equals(faculty, student.faculty) && Objects.equals(groupName, student.groupName) && Objects.equals(theme, student.theme) && Objects.equals(marks, student.marks);
+    return Objects.equals(recordBookNumber, student.recordBookNumber) && Objects.equals(fullName, student.fullName) && Objects.equals(faculty, student.faculty) && Objects.equals(groupName, student.groupName) && Objects.equals(theme, student.theme) && Objects.equals(marksList, student.marksList);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fullName, faculty, groupName, theme, marks);
+    return Objects.hash(recordBookNumber, fullName, faculty, groupName, theme, marksList);
   }
 
   @Override
@@ -52,7 +54,12 @@ public class Student {
       ", fullName='" + fullName + '\'' +
       ", faculty='" + faculty + '\'' +
       ", groupName='" + groupName + '\'' +
-      ", marks=" + marks +
+      ", theme=" + theme +
+      ", marksList=" + marksList +
       '}';
+  }
+
+  public void addMarks(Marks marks) {
+    marksList.add(marks);
   }
 }
