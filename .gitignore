@@ -1,0 +1,10 @@
+.gitignore
+
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+src/main/resources/admin_setup.properties
+src/main/resources/init.sql
+
+### IntelliJ IDEA ###
+.idea

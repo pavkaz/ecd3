@@ -1,7 +1,6 @@
 package com.kazh_kvetk.services;
 
-import com.kazh_kvetk.data.Marks;
-import com.kazh_kvetk.exceptions.EntityAlreadyExistsException;
+import com.kazh_kvetk.data.entities.Marks;
 
 public interface MarksService {
   void save(Marks marks);

@@ -1,9 +1,8 @@
 package com.kazh_kvetk.controllers;
 
-import com.kazh_kvetk.data.Teacher;
-import com.kazh_kvetk.data.Theme;
-import com.kazh_kvetk.exceptions.EntityAlreadyExistsException;
-import com.kazh_kvetk.exceptions.EntityIsDependentException;
+import com.kazh_kvetk.data.entities.Teacher;
+import com.kazh_kvetk.data.entities.Theme;
+import com.kazh_kvetk.security.AuthorityRequired;
 import com.kazh_kvetk.services.TeacherService;
 import com.kazh_kvetk.services.ThemeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.security.Principal;
 
 @Controller
 @Transactional
@@ -29,64 +26,61 @@ public class TeacherController {
   }
 
   @GetMapping("/teachers")
-  public String infoPage(Model model, Principal principal) {
-    model.addAttribute("authorise", principal != null);
+  public String infoPage(Model model) {
     model.addAttribute("teachers", teacherService.readAll());
     return "teachers";
   }
 
   @GetMapping("/teachers/{code}")
-  public String oneTeacherInfoPage(Model model, Principal principal, @PathVariable("code") Integer code) {
-    model.addAttribute("authorise", principal != null);
+  public String oneTeacherInfoPage(Model model, @PathVariable("code") Integer code) {
     model.addAttribute("teacher", teacherService.read(code));
     return "teacher";
   }
 
   @PostMapping("/teachers/{code}/delete")
+  @AuthorityRequired("ROLE_ADMIN")
   public String deleteTeacher(@PathVariable("code") Integer code) {
     teacherService.delete(code);
     return "redirect:/info";
   }
 
   @GetMapping("/teachers/themes/add")
-  public String selectTeacherToThemePage(Model model, Principal principal) {
-    model.addAttribute("authorise", principal != null);
+  @AuthorityRequired("ROLE_ADMIN")
+  public String selectTeacherToThemePage(Model model) {
     model.addAttribute("teachers", teacherService.readAll());
     return "teacher-select";
   }
 
   @GetMapping("/teachers/add")
-  public String addTeacherPage(Model model, Principal principal) {
-    model.addAttribute("authorise", principal != null);
+  @AuthorityRequired("ROLE_ADMIN")
+  public String addTeacherPage() {
     return "teacher-add";
   }
 
   @PostMapping("/teachers/add")
-  public String addTeacher(Teacher teacher, Model model) {
+  @AuthorityRequired("ROLE_ADMIN")
+  public String addTeacher(Teacher teacher) {
     teacherService.save(teacher);
     return "redirect:/info";
   }
 
   @GetMapping("/teachers/themes")
-  public String allPage(Model model, Principal principal) {
-    model.addAttribute("authorise", principal != null);
+  public String allPage(Model model) {
     model.addAttribute("teachers", teacherService.readAll());
     return "themes";
   }
 
   @GetMapping("/teachers/{code}/themes/{id}")
-  public String themeInfoPage(Model model, Principal principal,
+  public String themeInfoPage(Model model,
                               @PathVariable("code") Integer code, @PathVariable("id") Integer id) {
-    model.addAttribute("authorise", principal != null);
     model.addAttribute("theme", themeService.read(id));
     model.addAttribute("teacher", teacherService.read(code));
     return "theme";
   }
 
   @GetMapping("/teachers/{code}/themes/add")
-  public String addThemePage(@PathVariable("code") Integer code, Model model, Principal principal) {
-    model.addAttribute("authorise", principal != null);
-
+  @AuthorityRequired("ROLE_ADMIN")
+  public String addThemePage(@PathVariable("code") Integer code, Model model) {
     Teacher teacher = teacherService.read(code);
     if (teacher == null) {
       throw new IllegalArgumentException("Teacher with code: " + code + " not found");
@@ -96,6 +90,7 @@ public class TeacherController {
   }
 
   @PostMapping("/teachers/{code}/themes/add")
+  @AuthorityRequired("ROLE_ADMIN")
   public String addTheme(@PathVariable("code") Integer code, Theme theme) {
     Teacher teacher = teacherService.read(code);
     if (teacher != null) {
@@ -105,7 +100,9 @@ public class TeacherController {
   }
 
   @PostMapping("/teachers/{code}/themes/{id}/delete")
-  public String deleteTheme(@PathVariable("code") Integer code, @PathVariable("id") Integer id, Model model) {
+  @AuthorityRequired("ROLE_ADMIN")
+  public String deleteTheme(@PathVariable("code") Integer code,
+                            @PathVariable("id") Integer id) {
     Teacher teacher = teacherService.read(code);
     if (teacher != null) {
       Theme theme = themeService.read(id);

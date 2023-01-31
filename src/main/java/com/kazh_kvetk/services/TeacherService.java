@@ -1,10 +1,6 @@
 package com.kazh_kvetk.services;
 
-import com.kazh_kvetk.data.Teacher;
-import com.kazh_kvetk.data.Theme;
-import com.kazh_kvetk.exceptions.EntityAlreadyExistsException;
-import com.kazh_kvetk.exceptions.EntityIsDependentException;
-import org.hibernate.persister.entity.SingleTableEntityPersister;
+import com.kazh_kvetk.data.entities.Teacher;
 
 import java.util.List;
 

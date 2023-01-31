@@ -1,6 +1,6 @@
 package com.kazh_kvetk.data.repositories;
 
-import com.kazh_kvetk.data.User;
+import com.kazh_kvetk.data.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

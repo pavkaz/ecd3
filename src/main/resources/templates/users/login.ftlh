@@ -27,10 +27,10 @@
       <div class="col"></div>
       <div class="row align-items-center">
         <div class="col">
-          <a class="btn btn-dark " href="/users/registration">Registration</a>
+          <button type="submit" class="btn btn-dark">Login</button>
         </div>
         <div class="col">
-          <button type="submit" class="btn btn-dark">Login</button>
+          <a class="btn btn-dark " href="/users/registration">Registration</a>
         </div>
       </div>
     </div>

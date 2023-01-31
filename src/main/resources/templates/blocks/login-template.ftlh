@@ -18,11 +18,11 @@
     <div class="container-fluid">
       <div>
         <a href="/info">
-          <span class="navbar-brand mb-0 h1">Themes configurer</span>
+          <span class="navbar-brand mb-0 h1">Students themes</span>
         </a>
 
-        <a href="/statement">
-          <span class="navbar-brand mb-0 h1">Student assessment statement</span>
+        <a href="/progress">
+          <span class="navbar-brand mb-0 h1">Students progress</span>
         </a>
       </div>
         <#if authorise>

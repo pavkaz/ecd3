@@ -1,8 +1,8 @@
 package com.kazh_kvetk.data.repositories;
 
 import com.kazh_kvetk.data.FacultyGroup;
-import com.kazh_kvetk.data.Student;
-import com.kazh_kvetk.data.Theme;
+import com.kazh_kvetk.data.entities.Student;
+import com.kazh_kvetk.data.entities.Theme;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -74,7 +74,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     "               where m.year = :year and m.semester = :semester " +
     "               group by s.faculty, s.group_name) g" +
     "              on ((g.faculty = s.faculty) and (g.group_name = s.group_name))" +
-    "              where m.year = :year and m.semester = :semester"
-  )
+    "              where m.year = :year and m.semester = :semester")
   List<FacultyGroup> groupByFacultyInDate(@Param("year") int year, @Param("semester") int semester);
 }

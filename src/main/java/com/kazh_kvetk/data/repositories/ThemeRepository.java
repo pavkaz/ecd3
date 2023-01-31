@@ -1,7 +1,6 @@
 package com.kazh_kvetk.data.repositories;
 
-import com.kazh_kvetk.data.Theme;
-import org.springframework.core.annotation.Order;
+import com.kazh_kvetk.data.entities.Theme;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

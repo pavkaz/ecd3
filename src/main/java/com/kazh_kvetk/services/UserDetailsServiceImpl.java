@@ -1,8 +1,9 @@
 package com.kazh_kvetk.services;
 
-import com.kazh_kvetk.data.User;
+import com.kazh_kvetk.data.entities.User;
 import com.kazh_kvetk.security.authorities.AuthoritiesProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,7 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   private final AuthoritiesProvider provider;
 
   @Autowired
-  public UserDetailsServiceImpl(UserService service, AuthoritiesProvider provider) {
+  public UserDetailsServiceImpl(UserService service, @Qualifier("defaultAuthoritiesProvider") AuthoritiesProvider provider) {
     this.service = service;
     this.provider = provider;
   }

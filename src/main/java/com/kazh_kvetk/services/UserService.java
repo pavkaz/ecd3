@@ -1,8 +1,7 @@
 package com.kazh_kvetk.services;
 
 
-import com.kazh_kvetk.data.User;
-import com.kazh_kvetk.exceptions.EntityAlreadyExistsException;
+import com.kazh_kvetk.data.entities.User;
 
 public interface UserService {
   void save(User user);

@@ -1,7 +1,7 @@
 package com.kazh_kvetk.controllers;
 
-import com.kazh_kvetk.data.User;
-import com.kazh_kvetk.exceptions.EntityAlreadyExistsException;
+import com.kazh_kvetk.data.entities.Role;
+import com.kazh_kvetk.data.entities.User;
 import com.kazh_kvetk.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Controller
@@ -31,8 +33,7 @@ public class UserController {
   }
 
   @GetMapping("/users/login")
-  public String loginPage(HttpSession session, Model model, Principal principal) {
-    model.addAttribute("authorise", principal != null);
+  public String loginPage(HttpSession session, Model model) {
     if (session != null ) {
       Exception exception = (Exception) session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
       if (exception != null) {
@@ -43,22 +44,20 @@ public class UserController {
   }
 
   @GetMapping("/users/registration")
-  public String registrationPage(Model model, Principal principal) {
-    model.addAttribute("authorise", principal != null);
+  public String registrationPage() {
     return "users/registration";
   }
 
   @PostMapping("/users/registration")
-  public String registration(@RequestParam("username") String username, @RequestParam("password") String password, Model model, Principal principal) {
-    userService.save(new User(username, passwordEncoder.encode(password)));
+  public String registration(@RequestParam("username") String username,
+                             @RequestParam("password") String password) {
+    userService.save(new User(username, passwordEncoder.encode(password), List.of(new Role("ROLE_USER"))));
     return "redirect:/users/login";
   }
 
   @GetMapping("/users/current/info")
   public String currentInfoPage(Model model, Principal principal) {
     Objects.requireNonNull(principal);
-
-    model.addAttribute("authorise", true);
     model.addAttribute("user", userService.read(principal.getName()));
     return "users/info";
   }

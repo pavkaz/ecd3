@@ -1,8 +1,8 @@
 package com.kazh_kvetk.services;
 
-import com.kazh_kvetk.data.Theme;
+import com.kazh_kvetk.data.entities.Theme;
 import com.kazh_kvetk.data.repositories.ThemeRepository;
-import com.kazh_kvetk.exceptions.EntityAlreadyExistsException;
+import com.kazh_kvetk.data.entities.exceptions.EntityAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
