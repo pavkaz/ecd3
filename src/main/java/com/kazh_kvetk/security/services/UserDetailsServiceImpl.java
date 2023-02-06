@@ -1,7 +1,8 @@
-package com.kazh_kvetk.services;
+package com.kazh_kvetk.security.services;
 
 import com.kazh_kvetk.data.entities.User;
 import com.kazh_kvetk.security.authorities.AuthoritiesProvider;
+import com.kazh_kvetk.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       throw new UsernameNotFoundException("User with name: " + username + "not found");
     }
     return new org.springframework.security.core.userdetails.User(
-      src.getName(), src.getEncryptedPassword(), provider.apply(src)
+      src.getUsername(), src.getEncryptedPassword(), provider.apply(src)
     );
   }
 }

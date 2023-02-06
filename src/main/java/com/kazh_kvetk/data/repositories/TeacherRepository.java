@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
+public interface TeacherRepository extends UserBaseRepository<Teacher> {
   @Query(nativeQuery = true,
     value = "select * from teachers t join theme th on t.code = th.teacher_code where th.id = ?1")
   Teacher findByThemeId(Integer themeId);

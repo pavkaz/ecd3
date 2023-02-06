@@ -4,6 +4,7 @@ import com.kazh_kvetk.data.FacultyGroup;
 import com.kazh_kvetk.security.AuthorityRequired;
 import com.kazh_kvetk.services.EntitiesInfoProvider;
 import com.kazh_kvetk.services.StudentService;
+import com.kazh_kvetk.services.factories.BaseUserFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;

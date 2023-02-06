@@ -5,8 +5,8 @@
     <#list students as student>
       <li class="list-group-item">
         <div class="btn-group">
-          <a href="/students/${student.recordBookNumber}" class="btn btn-link">${student.fullName}</a>
-          <form action="/students/${student.recordBookNumber}/delete" method="post">
+          <a href="/students/${student.id}" class="btn btn-link">${student.fullName}</a>
+          <form action="/students/${student.id}/delete" method="post">
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <input class="btn btn-link" type="submit" value="-" style="color: red; font-weight: bolder">
           </form>

@@ -4,7 +4,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">№</th>
           <th scope="col"><a href="/teachers">Teacher</a></th>
           <th scope="col"><a href="/teachers/themes">Theme</a></th>
           <th scope="col"><a href="/students">Student</a></th>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class ExceptionAdvice {
 
+  //TODO: Ошибка не появляется если не зареган
   @ExceptionHandler(RuntimeException.class)
   public String handleException(Throwable ex,
                                 HttpServletRequest request,

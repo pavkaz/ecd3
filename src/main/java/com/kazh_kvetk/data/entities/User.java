@@ -13,14 +13,14 @@ import static javax.persistence.CascadeType.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
-public class User {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class User {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.TABLE)
   private Integer id;
 
-  @Column(name = "name", unique = true)
-  private String name;
+  @Column(name = "username", unique = true)
+  private String username;
 
   @Column(name = "encrypted_password", length = 1024)
   private String encryptedPassword;
@@ -34,15 +34,15 @@ public class User {
       name = "role_id", referencedColumnName = "id"))
   private Collection<Role> roles;
 
-  public User(String name, String encryptedPassword, Collection<Role> roles) {
-    this.name = name;
+  public User(String username, String encryptedPassword, Collection<Role> roles) {
+    this.username = username;
     this.encryptedPassword = encryptedPassword;
     this.roles = roles;
   }
 
   public void update(User user) {
-    if (user.name != null) {
-      this.name = user.name;
+    if (user.username != null) {
+      this.username = user.username;
     }
     if (user.encryptedPassword != null) {
       this.encryptedPassword = user.encryptedPassword;

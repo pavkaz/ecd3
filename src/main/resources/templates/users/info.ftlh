@@ -2,7 +2,7 @@
 <@t.template authorise>
   <h1 style="text-align: center">User info</h1>
 <hr>
-  <div style="text-align: center"><h2>${user.name}</h2></div><br>
+  <div style="text-align: center"><h2>${user.username}</h2></div><br>
 
   <div class="row align-items-center">
     <div class="col">

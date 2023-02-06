@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
 
   @Override
   public void save(Student student) {
-    Integer recordBookNumber = student.getRecordBookNumber();
+    Integer recordBookNumber = student.getId();
     if (recordBookNumber != null) {
       Student src = read(recordBookNumber);
       if (src == null) {
@@ -50,7 +50,7 @@ public class StudentServiceImpl implements StudentService {
   public void update(int recordBookNumber, Student student) {
     Student src = read(recordBookNumber);
     if (src != null) {
-      student.setRecordBookNumber(src.getRecordBookNumber());
+      student.setId(src.getId());
       repository.save(student);
     }
   }

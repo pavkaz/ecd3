@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void save(User user) {
-    String userName = user.getName();
-    if (repository.findByName(userName).isPresent()) {
+    String userName = user.getUsername();
+    if (repository.findByUsername(userName).isPresent()) {
       throw new EntityAlreadyExistsException(user.getClass(), userName);
     }
     Integer userId = user.getId();
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User read(String username) {
-    return repository.findByName(username).orElse(null);
+    return repository.findByUsername(username).orElse(null);
   }
 
   @Override

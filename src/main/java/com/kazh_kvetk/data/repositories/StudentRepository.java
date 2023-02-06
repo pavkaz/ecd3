@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, Integer> {
+public interface StudentRepository extends UserBaseRepository<Student> {
   Student findByTheme(Theme theme);
 
   boolean existsByTheme(Theme theme);
@@ -27,18 +27,18 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     "((m.state_exam_grade + m.thesis_grade) / 2) as avgGrade" +
     " from students s" +
     "         join marks m" +
-    "              on m.student_record_book_number = s.record_book_number" +
+    "              on m.student_record_book_number = s.id" +
     "         join (select fg.faculty," +
     "                      fg.avg_grade_by_faculty," +
     "                      s.group_name," +
     "                      (avg(m.state_exam_grade) + avg(m.thesis_grade)) / 2 as avg_grade_by_group" +
     "               from students s" +
     "                        join marks m" +
-    "                             on m.student_record_book_number = s.record_book_number" +
+    "                             on m.student_record_book_number = s.id" +
     "                        join (select s.faculty," +
     "                                     (avg(m.state_exam_grade) + avg(m.thesis_grade)) / 2 as avg_grade_by_faculty" +
     "                              from students s" +
-    "                                       join marks m on m.student_record_book_number = s.record_book_number" +
+    "                                       join marks m on m.student_record_book_number = s.id" +
     "                              group by s.faculty) fg" +
     "                             on fg.faculty = s.faculty" +
     "               group by s.faculty, s.group_name) g" +
@@ -56,18 +56,18 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     "((m.state_exam_grade + m.thesis_grade) / 2) as avgGrade" +
     " from students s" +
     "         join marks m" +
-    "              on m.student_record_book_number = s.record_book_number" +
+    "              on m.student_record_book_number = s.id" +
     "         join (select fg.faculty," +
     "                      fg.avg_grade_by_faculty," +
     "                      s.group_name," +
     "                      (avg(m.state_exam_grade) + avg(m.thesis_grade)) / 2 as avg_grade_by_group" +
     "               from students s" +
     "                        join marks m" +
-    "                             on m.student_record_book_number = s.record_book_number" +
+    "                             on m.student_record_book_number = s.id" +
     "                        join (select s.faculty," +
     "                                     (avg(m.state_exam_grade) + avg(m.thesis_grade)) / 2 as avg_grade_by_faculty" +
     "                              from students s" +
-    "                                       join marks m on m.student_record_book_number = s.record_book_number" +
+    "                                       join marks m on m.student_record_book_number = s.id" +
     "                                       where m.year = :year and m.semester = :semester" +
     "                              group by s.faculty) fg" +
     "                             on fg.faculty = s.faculty" +

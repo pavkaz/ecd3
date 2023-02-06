@@ -25,7 +25,7 @@ public class TeacherServiceImpl implements TeacherService {
 
   @Override
   public void save(Teacher teacher) {
-    Integer code = teacher.getCode();
+    Integer code = teacher.getId();
     if (code != null) {
       Teacher src = read(code);
       if (src == null) {
@@ -52,7 +52,7 @@ public class TeacherServiceImpl implements TeacherService {
   public void update(int code, Teacher teacher) {
     Teacher src = read(code);
     if (src != null) {
-      teacher.setCode(src.getCode());
+      teacher.setId(src.getId());
       repository.save(teacher);
     }
   }
@@ -64,8 +64,8 @@ public class TeacherServiceImpl implements TeacherService {
       Student student = studentService.findByTheme(theme);
       if (student != null) {
         throw new EntityIsDependentException(
-          teacher.getClass(), teacher.getCode(),
-          student.getClass(), student.getRecordBookNumber());
+          teacher.getClass(), teacher.getId(),
+          student.getClass(), student.getId());
       }
     }
     repository.deleteById(code);

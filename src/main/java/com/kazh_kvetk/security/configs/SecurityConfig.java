@@ -22,16 +22,18 @@ public class SecurityConfig {
           "/users/current/**",
           "/teachers/**",
           "/students/**",
-          "/statement/**"
+          "/statement/**",
+          "/info/**",
+          "/progress/**"
         ).authenticated()
       )
-      .formLogin(formConfigurer -> formConfigurer
+      .formLogin(loginConfigurer -> loginConfigurer
         .loginPage("/users/login")
         .defaultSuccessUrl("/info", true)
       )
       .logout(logoutConfigurer -> logoutConfigurer
         .logoutUrl("/users/logout")
-        .logoutSuccessUrl("/info")
+        .logoutSuccessUrl("/users/login")
       );
     return httpSecurity.build();
   }

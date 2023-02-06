@@ -1,8 +1,8 @@
 <#import "../blocks/login-template.ftlh" as t>
 <@t.template authorise>
-  <h1 style="text-align: center">Registration</h1>
+  <h1 style="text-align: center">Registration 1 stage</h1>
   <hr>
-  <form action="/users/registration" method="post">
+  <form action="/users/registration/1" method="post">
     <div class="form-group">
       <input type="text" class="form-control <#if errorMessage??>is-invalid</#if>"
              id="username" name="username">
@@ -19,6 +19,15 @@
       <div id="password" class="invalid-feedback">
         Invalid password
       </div>
+    </div>
+
+    <div class="form-group">
+      <select class="form-select" id="userType" name="userType">
+        <option disabled>Select your user type</option>
+          <#list supportedTypes as type>
+            <option value="${type}">${type}</option>
+          </#list>
+      </select>
     </div>
 
     <input type="hidden" name="_csrf" value="${_csrf.token}">

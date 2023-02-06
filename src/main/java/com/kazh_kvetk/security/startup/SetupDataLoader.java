@@ -1,6 +1,7 @@
 package com.kazh_kvetk.security.startup;
 
 import com.kazh_kvetk.data.entities.Role;
+import com.kazh_kvetk.data.entities.Teacher;
 import com.kazh_kvetk.data.entities.User;
 import com.kazh_kvetk.data.repositories.RoleRepository;
 import com.kazh_kvetk.data.repositories.UserRepository;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -69,7 +71,8 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
   }
 
   private User createUserIfNotExistsAndGet(String name, String passHash, Collection<Role> roles) {
-    return userRepository.findByName(name)
-      .orElseGet(() -> new User(name, passHash, roles));
+    return userRepository.findByUsername(name)
+      .orElseGet(() -> new Teacher(name, passHash, roles, "adminFullName", "adminDegree",
+        "adminAcademicRank", "adminDepartment", "adminPhone", "admin@mail.com", List.of()));
   }
 }
